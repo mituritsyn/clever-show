@@ -21,10 +21,10 @@ logging.basicConfig(
 
 
 @messaging.message_callback("dronepoint")
-def dronepoint_callback(connection, dronepoint_id=None, container_id=None):
+def dronepoint_callback(connection, need_to_land=None, colour=None, point=None):
     # this function only called after receiving "dronepoint" message from the server
     # dronepoint_id and container_id are ints
-    logging.info("Dronepoint_id: {}; Container_id: {}".format(dronepoint_id, container_id))
+    logging.info("Is landing needed: {}; Info colour: {}; Map point: {}".format(need_to_land,colour,point))
     # your code goes here
 
 

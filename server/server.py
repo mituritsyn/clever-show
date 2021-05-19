@@ -641,12 +641,16 @@ class MainWindow(QtWidgets.QMainWindow):
 
     @pyqtSlot()
     def dronepoint_command(self):
-        dronepoint_id = random.randint(1, 3)
-        container_id = random.randint(1, 3)
-        logging.info(f"Dronepoint_id: {dronepoint_id}; Container_id: {container_id}")
+        need_to_land = random.randint(0, 1)
+        colour_list = ['green', 'blue', 'red']
+        point_list = ['aruco_4', 'aruco_5', 'aruco_14', 'aruco_15', 'aruco_24', 'aruco_25', 'aruco_34', 'aruco_35', 'aruco_44', 'aruco_45']
+        point = random.choice(point_list)
+        colour = random.choice(colour_list)
+        logging.info(f"Colour: {colour}; Point: {point}; Is land needed: {need_to_land}")
         self.send_to_selected("dronepoint", command_kwargs={
-            "dronepoint_id": dronepoint_id,
-            "container_id": container_id,
+            "need_to_land": need_to_land,
+            "colour": colour,
+            "point": point
         })
 
     def register_callbacks(self):
